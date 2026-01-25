@@ -5,4 +5,3 @@ average_geometric = (num_1 * num_2)**0.5
 print('Даны два числа:', num_1, 'и', num_2)
 print('Среднее арифметическое чисел:', average_arithmetic)
 print('Среднее геометрическое чисел:', average_geometric)
-

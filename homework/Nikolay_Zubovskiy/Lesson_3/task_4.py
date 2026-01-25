@@ -5,4 +5,3 @@ area_triangle = 0.5 * leg_1 * leg_2
 print('Даны катеты прямоугольного треугольника:', leg_1, 'и', leg_2)
 print('Длина гипотенузы:', hypotenuse)
 print('Площадь треугольника:', area_triangle)
-
