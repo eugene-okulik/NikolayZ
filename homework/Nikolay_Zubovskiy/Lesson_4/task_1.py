@@ -13,7 +13,7 @@ print(my_dict['tuple'][-1])
 my_dict['list'].append('гранат')
 my_dict['list'].pop(1)
 
-my_dict['dict']['i am a tuple'] = 'New element'
+my_dict['dict'][('i am a tuple',)] = 'New element'
 my_dict['dict'].pop('language')
 
 my_dict['set'].add('Pascal')
