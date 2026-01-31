@@ -13,6 +13,5 @@ response_int_3 = int(response_str_3.split()[-1]) + 10
 print('Вариант через сплит:', response_int_1, response_int_2, response_int_3, sep='\n')
 
 index_1 = response_str_1.index(':')
-response_int_1 = int(response_str_1[index_1+1:]) + 10
+response_int_1 = int(response_str_1[index_1 + 1:]) + 10
 print("Вариант через индекс ':' и далее срез строки:", response_int_1)
-
