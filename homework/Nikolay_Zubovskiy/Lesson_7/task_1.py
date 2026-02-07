@@ -9,6 +9,7 @@ colors = {
     'magenta': Fore.LIGHTMAGENTA_EX
 }
 
+
 def message(msg_type, num):
     if msg_type == 'input':
         return (f"Вы ввели {colors['green']}{num} - {colors['red']}это не верное число!")
@@ -19,6 +20,7 @@ def message(msg_type, num):
     elif msg_type == 'success':
         return (f"{colors['magenta']}Поздравляем! \nВы ввели число {colors['green']}{num} - "
                 f"{colors['magenta']}это верное число, вы победили!")
+
 
 secret_num = 42
 
