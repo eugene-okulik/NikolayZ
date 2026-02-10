@@ -7,4 +7,4 @@ for salary, bonus in employee_salary:
         total_salary = int(salary * (1 + random.randint(0, 100) / 100))
         print(f"{salary}, {bonus} - '${total_salary}'")
     else:
-       print(f"{salary}, {bonus} - '${salary}'")
+        print(f"{salary}, {bonus} - '${salary}'")

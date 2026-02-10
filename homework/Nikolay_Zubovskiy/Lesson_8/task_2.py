@@ -1,7 +1,8 @@
 import sys
-sys.set_int_max_str_digits(30000) # чтобы не было ошибки с переполнением при выводе длинного числа
+sys.set_int_max_str_digits(30000)  # чтобы не было ошибки с переполнением при выводе длинного числа
 
-def fibo_generate(number = 100):
+
+def fibo_generate(number=100):
     a, b = 0, 1
     for _ in range(number):
         yield a
