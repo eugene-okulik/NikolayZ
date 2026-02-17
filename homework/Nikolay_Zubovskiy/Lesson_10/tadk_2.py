@@ -30,8 +30,9 @@ def repeat_me_1(func):
 
     return wrapper
 
+
 @repeat_me_1
-def example_1(text,count):
+def example_1(text, count):
     print(text)
 
 
@@ -50,5 +51,6 @@ def repeat_me_2(count):
 @repeat_me_2(3)
 def example_2(text):
     print(text)
+
 
 example_2('print mе, вложенный декоратор')

@@ -15,19 +15,21 @@
 first = int(input('Enter first number: '))
 second = int(input('Enter second number: '))
 
+
 def result(func):
 
     def wrapper(first, second):
         if first == second:
             return func(first, second, '+')
         elif first < 0 or second < 0:
-             return func(first, second, '*')
+            return func(first, second, '*')
         elif first > second:
             return func(first, second, '-')
         elif first < second:
             return func(first, second, '/')
 
     return wrapper
+
 
 @result
 def calc(first, second, operation):
@@ -39,5 +41,6 @@ def calc(first, second, operation):
         return first / second
     elif operation == '*':
         return first * second
+
 
 print(calc(first, second))
