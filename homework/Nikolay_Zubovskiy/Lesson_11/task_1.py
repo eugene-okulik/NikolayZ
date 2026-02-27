@@ -39,6 +39,7 @@
 class Book:
     material = 'бумага'
     text = True
+
     def __init__(self, name, author, pages, ISBN, reserved):
         self.name = name
         self.author = author
@@ -48,6 +49,7 @@ class Book:
 
 
 class SchoolBook(Book):
+
     def __init__(self, name, author, pages, ISBN, reserved, subject, level, tasks):
         super().__init__(name, author, pages, ISBN, reserved)
         self.subject = subject
@@ -61,7 +63,7 @@ def deco_book_info(func):
             base = (f'Название: {book.name}, Автор: {book.author}, '
                     f'страниц: {book.pages}, предмет: {book.subject}, класс: {book.level}')
         else:
-            base = (f'Название: {book.name}, Автор: {book.author}, '
+            base = (f'Название: {book.name}, Автор: {book.author},'
                 f'страниц: {book.pages}, материал: {book.material}')
         if book.reserved:
             return func(f'{base}, зарезервирована')
@@ -74,24 +76,24 @@ def ticket_book(book):
     print(book)
 
 
-books = [Book('Идиот', 'Достоевский В.М.', 500,
-                   '978-5-17-123456-7',True),
-         SchoolBook('История России','Торкунов А.В.', 350,
-               '978-5-09-112233-4', True, 'История', 6, False),
-         Book('Мастер и Маргарита', 'Булгаков М.А', 400,
-                   '978-5-699-12345-6', False),
-         Book('Преступление и наказание', 'Достоевский Ф.М.', 600,
-                   '978-5-04-123456-8',True),
-         SchoolBook('Алгебра', 'Макарычев Ю.Н.', 250,
-               '978-5-09-123456-7', False, 'Алгебра', 7, True),
-         Book('Война и мир. Том 1', 'Толстой Л.Н.', 750,
-                   '978-5-389-12345-9', False),
-         SchoolBook('Физика', 'Перышкин А.В.', 320,
-               '978-5-09-987654-3', True, 'Физика', 8, True),
+books = [Book('Идиот','Достоевский В.М.',500,
+              '978-5-17-123456-7',True),
+         SchoolBook('История России','Торкунов А.В.',350,
+                    '978-5-09-112233-4',True, 'История',6,False),
+         Book('Мастер и Маргарита','Булгаков М.А',400,
+              '978-5-699-12345-6',False),
+         Book('Преступление и наказание','Достоевский Ф.М.',600,
+              '978-5-04-123456-8',True),
+         SchoolBook('Алгебра', 'Макарычев Ю.Н.',250,
+                    '978-5-09-123456-7',False,'Алгебра',7,True),
+         Book('Война и мир. Том 1','Толстой Л.Н.',750,
+              '978-5-389-12345-9',False),
+         SchoolBook('Физика','Перышкин А.В.',320,
+                    '978-5-09-987654-3', True,'Физика',8, True),
          SchoolBook('Русский язык', 'Ладыженская Т.А.', 280,
-               '978-5-09-456789-0', False, 'Русский язык', 5, False),
-         Book('Анна Каренина', 'Толстой Л.Н.', 800,
-                   '978-5-17-987654-3', True)]
+                    '978-5-09-456789-0', False, 'Русский язык',5,False),
+         Book('Анна Каренина','Толстой Л.Н.',800,
+              '978-5-17-987654-3',True)]
 
 for i, book in enumerate(books, 1):
     print(f'{i}. ', end='')
