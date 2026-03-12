@@ -81,10 +81,10 @@ lily_2 = Lily('Лилии 2', 20, 'розовый', 55, 700, True)
 lily_3 = Lily('Лилии 3', 20, 'красный', 60, 800, False)
 
 bouquets = [
-            Bouquet([rose_1]),
-            Bouquet([tulip_1, tulip_2, rose_1]),
-            Bouquet([tulip_1, rose_1, rose_2, lily_1, lily_2]),
-            Bouquet([rose_1, rose_1, rose_1, rose_2, rose_3])
+    Bouquet([rose_1]),
+    Bouquet([tulip_1, tulip_2, rose_1]),
+    Bouquet([tulip_1, rose_1, rose_2, lily_1, lily_2]),
+    Bouquet([rose_1, rose_1, rose_1, rose_2, rose_3])
 ]
 
 print('Время увядания букета 4:', bouquets[3].time_to_die(), 'дн')
