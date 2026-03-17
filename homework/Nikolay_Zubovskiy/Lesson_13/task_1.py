@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 
 base_path = os.path.dirname(__file__)
 file_path = os.path.dirname(os.path.dirname(base_path))
-eo_file_path = os.path.join(file_path, 'eugene_okulik', 'hw_13',  'data.txt')
+eo_file_path = os.path.join(file_path, 'eugene_okulik', 'hw_13', 'data.txt')
 print(eo_file_path)
 
 
