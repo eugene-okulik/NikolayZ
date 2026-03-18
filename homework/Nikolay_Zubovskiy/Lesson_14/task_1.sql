@@ -57,3 +57,5 @@ VALUES ('Высшая философия огня'),
  JOIN subjects sub on l.subject_id = sub.id
  WHERE s.id = 22423
  ORDER BY sub.title
+
+ UPDATE marks SET value = 'наивысшый возможный балл' where lesson_id = 75372
