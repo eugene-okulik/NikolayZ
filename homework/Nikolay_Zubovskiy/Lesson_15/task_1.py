@@ -126,7 +126,7 @@ db.commit()
 
 query = '''
 SELECT
- 	s.id as student_id,
+    s.id as student_id,
     s.name as student_name,
     s.second_name as student_second_name,
     g.id as grp_id,
