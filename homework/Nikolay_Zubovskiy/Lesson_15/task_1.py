@@ -39,86 +39,97 @@ class Lesson:
         self.title = title
         self.subject_id = subject_id
 
-    def get_lesson_id(self, cursor):
-        query = "SELECT id FROM lessons WHERE title = %s"
-        cursor.execute(query, (self.title,))
-        lesson_id = cursor.fetchone()['id']
-        return lesson_id
+    # def get_lesson_id(self, cursor):
+    #     query = "SELECT id FROM lessons WHERE title = %s"
+    #     cursor.execute(query, (self.title,))
+    #     lesson_id = cursor.fetchone()['id']
+    #     return lesson_id
 
 
-student_1 = Student('Violetta', 'Grineva', None)
-book_1 = Book('Гарри Поттер и морские глубины', None)
-book_2 = Book('Гарри Поттер и космические пираты', None)
-book_3 = Book('Гарри Поттер и таксисты', None)
-group_1 = Group('NightWish', 'jan 2026', 'jun 2026')
-subject_1 = Subject('Всемирная магия событий')
+student1 = Student('Violetta', 'Grineva', None)
+book1 = Book('Гарри Поттер и морские глубины', None)
+book2 = Book('Гарри Поттер и космические пираты', None)
+book3 = Book('Гарри Поттер и таксисты', None)
+group1 = Group('NightWish', 'jan 2026', 'jun 2026')
+subject1 = Subject('Всемирная магия событий')
 
 cursor = db.cursor(dictionary=True)
 
 query = "INSERT INTO students (name, second_name) VALUES (%s, %s)"
-cursor.execute(query, (student_1.name, student_1.second_name))
+cursor.execute(query, (student1.name, student1.second_name))
+student1_id = cursor.lastrowid
+print('id студента = ', student1_id)
 
 query = "INSERT INTO `groups` (title, start_date, end_date) VALUES (%s, %s, %s)"
-cursor.execute(query, (group_1.title, group_1.start_date, group_1.end_date))
+cursor.execute(query, (group1.title, group1.start_date, group1.end_date))
+group1_id = cursor.lastrowid
+print('id группы = ', group1_id)
 
 query = "INSERT INTO subjects (title) VALUES (%s)"
-cursor.execute(query, (subject_1.title,))
+cursor.execute(query, (subject1.title,))
+subject1_id = cursor.lastrowid
+print('id предмета = ', subject1_id)
 
-db.commit()
+# query = "SELECT id FROM students WHERE name = %s and second_name = %s"
+# cursor.execute(query, (student_1.name, student_1.second_name))
+# student_1_id = cursor.fetchone()['id']
+# print('id студента = ', student_1_id)
 
-query = "SELECT id FROM students WHERE name = %s and second_name = %s"
-cursor.execute(query, (student_1.name, student_1.second_name))
-student_1_id = cursor.fetchone()['id']
-print('id студента = ', student_1_id)
+# query = "SELECT id FROM `groups` WHERE title = %s"
+# cursor.execute(query, (group_1.title,))
+# group_1_id = cursor.fetchone()['id']
+# print('id группы = ', group_1_id)
 
-query = "SELECT id FROM `groups` WHERE title = %s"
-cursor.execute(query, (group_1.title,))
-group_1_id = cursor.fetchone()['id']
-print('id группы = ', group_1_id)
+# # query = "SELECT id FROM subjects WHERE title = %s"
+# # cursor.execute(query, (subject_1.title,))
+# subject1_id = cursor.fetchone()['id']
+# print('id предмета = ', subject1_id)
 
-query = "SELECT id FROM subjects WHERE title = %s"
-cursor.execute(query, (subject_1.title,))
-subject_1_id = cursor.fetchone()['id']
-print('id предмета = ', subject_1_id)
-
-lesson_1 = Lesson('Взаимодействие с магией', subject_1_id)
-lesson_2 = Lesson('Движение в магической воронке событий', subject_1_id)
+lesson1 = Lesson('Взаимодействие с магией', subject1_id)
+lesson2 = Lesson('Движение в магической воронке событий', subject1_id)
 
 query = "UPDATE students SET group_id = %s WHERE id = %s"
-cursor.execute(query, (group_1_id, student_1_id))
+cursor.execute(query, (group1_id, student1_id))
 
 query = "INSERT INTO books (title, taken_by_student_id) VALUES (%s, %s)"
 value = [
-    (book_1.title, student_1_id),
-    (book_2.title, student_1_id),
-    (book_3.title, student_1_id)
+    (book1.title, student1_id),
+    (book2.title, student1_id),
+    (book3.title, student1_id)
 ]
 cursor.executemany(query, value)
 
 query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
-value = [
-    (lesson_1.title, lesson_1.subject_id),
-    (lesson_2.title, lesson_2.subject_id),
-]
-cursor.executemany(query, value)
+cursor.execute(query, (lesson1.title, lesson1.subject_id))
+lesson1_id = cursor.lastrowid
+print('id урока_1 = ', lesson1_id)
 
-db.commit()
+query = "INSERT INTO lessons (title, subject_id) VALUES (%s, %s)"
+cursor.execute(query, (lesson2.title, lesson2.subject_id))
+lesson2_id = cursor.lastrowid
+print('id урока_2 = ', lesson2_id)
+
+# value = [
+#     (lesson_1.title, lesson_1.subject_id),
+#     (lesson_2.title, lesson_2.subject_id),
+# ]
+# cursor.executemany(query, value)
 
 # query = "SELECT id FROM lessons WHERE title = %s"
-# cursor.execute(query, (lesson_1.title,))
-# lesson_1_id = cursor.fetchone()['id']
-lesson_1_id = lesson_1.get_lesson_id(cursor)
-print('id урока_1 = ', lesson_1_id)
+# cursor.execute(query, (lesson1.title,))
+# lesson1_id = cursor.fetchone()['id']
+# lesson1_id = lesson1.get_lesson_id(cursor)
+# print('id урока_1 = ', lesson1_id)
 # query = "SELECT id FROM lessons WHERE title = %s"
 # cursor.execute(query, (lesson_2.title,))
-# lesson_2_id = cursor.fetchone()['id']
-lesson_2_id = lesson_2.get_lesson_id(cursor)
-print('id урока_2 = ', lesson_2_id)
+# lesson2_id = cursor.fetchone()['id']
+# lesson2_id = lesson2.get_lesson_id(cursor)
+# print('id урока_2 = ', lesson2_id)
 
 query = "INSERT INTO marks (value, lesson_id, student_id) VALUES (%s, %s, %s)"
 value = [
-    ("удовлетворительно", lesson_1_id, student_1_id),
-    ("неудовлетворительно", lesson_2_id, student_1_id)
+    ("удовлетворительно", lesson1_id, student1_id),
+    ("неудовлетворительно", lesson2_id, student1_id)
 ]
 cursor.executemany(query, value)
 
@@ -143,7 +154,7 @@ SELECT
  JOIN subjects sub on l.subject_id = sub.id
  WHERE s.id = %s
  ORDER BY sub.title'''
-cursor.execute(query, (student_1_id,))
+cursor.execute(query, (student1_id,))
 result = cursor.fetchall()
 for i, data in enumerate(result, 1):
     print(f'{i}. {data}')
