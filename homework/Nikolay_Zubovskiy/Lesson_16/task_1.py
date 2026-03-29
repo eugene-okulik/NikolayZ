@@ -52,7 +52,7 @@ WHERE s.name = %s
   AND b.title = %s
   AND sub.title = %s
   AND l.title = %s
-  AND m.value = %s 
+  AND m.value = %s
 '''
 missing_data = []
 
@@ -74,7 +74,8 @@ for row in data:
         for i in range(len(result)):
             result_id = result[i]['id']
             print(f"ID студента с данными: {row['name']}-{row['second_name']}-{row['group_title']}-"
-            f"{row['book_title']}-{row['subject_title']}-{row['lesson_title']}-"f"{row['mark_value']} = {result_id}")
+                  f"{row['book_title']}-{row['subject_title']}-{row['lesson_title']}-"
+                  f"{row['mark_value']} = {result_id}")
 
 print('В БД нет данных по следующим студентам:')
 for row in missing_data:
