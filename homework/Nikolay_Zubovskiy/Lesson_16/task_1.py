@@ -29,8 +29,11 @@ db = mysql.connect(
     database=os.getenv('DB_DATABASE')
 )
 
-with (open('/Users/purrweb/PycharmProjects/NikolayZ/homework/eugene_okulik/Lesson_16/hw_data/data.csv', newline='')
-      as csv_file):
+base_path = os.path.dirname(__file__)
+file_path = os.path.dirname(os.path.dirname(base_path))
+csv_file_path = os.path.join(file_path, 'eugene_okulik', 'Lesson_16', 'hw_data', 'data.csv')
+
+with open(csv_file_path, newline='') as csv_file:
     file_data = csv.DictReader(csv_file)
     data = []
     for row in file_data:
