@@ -2,6 +2,7 @@ import requests
 
 BASE_URL = 'http://objapi.course.qa-practice.com'
 
+
 def get_all_objects():
     response = requests.get(BASE_URL + '/object')
     print(response.json())
@@ -13,7 +14,7 @@ def get_one_objects(id):
 
 
 def post_object():
-    body = {"name": 'Tesla', "data": {"car": "BMW", "carColor" : "Black", "carNumber" : "A123AA"}}
+    body = {"name": 'Tesla', "data": {"car": "BMW", "carColor": "Black", "carNumber": "A123AA"}}
     response = requests.post(BASE_URL + '/object', json=body)
     print(response.json())
     assert response.status_code == 200
@@ -21,14 +22,14 @@ def post_object():
 
 
 def put_object(id):
-    body = {"name": 'Tesla', "data": {"car": "BMW", "carColor" : "BLACK-White", "carNumber" : "A123AA"}}
+    body = {"name": 'Tesla', "data": {"car": "BMW", "carColor": "BLACK-White", "carNumber": "A123AA"}}
     response = requests.put(BASE_URL + f'/object/{id}', json=body)
     print(response.json())
     assert response.json()['data']['carColor'] == 'BLACK-White', 'carColor is not BLACK-White'
 
 
 def patch_object(id):
-    body = {"data": {"carColor" : "White"}}
+    body = {"data": {"carColor": "White"}}
     response = requests.patch(BASE_URL + f'/object/{id}', json=body)
     print(response.json())
     assert response.json()['data']['carColor'] == 'White', 'carColor is not White'
