@@ -34,6 +34,7 @@ def create_test_object():
     yield post_id
     check = requests.get(f'{BASE_URL}/object/{post_id}')
     if check.status_code == 200:
+        requests.delete(f'{BASE_URL}/object/{post_id}', headers=HEADERS)
         print(f'✓ Объект {post_id} удалён')
     else:
         print(f'! Объект {post_id} уже был удалён')
