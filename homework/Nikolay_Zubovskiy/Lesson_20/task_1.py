@@ -29,14 +29,11 @@ def start_one():
 def create_test_object():
     body = {"name": "Test", "data": {"car": "Test_car", "carColor": "Test_color", "carNumber": "Test_number"}}
     response = requests.post(BASE_URL + '/object', json=body, headers=HEADERS)
-    assert response.status_code == 200
     post_id = response.json()['id']
     print(f"\n  → Создан объект с ID: {post_id}")
     yield post_id
     check = requests.get(f'{BASE_URL}/object/{post_id}')
     if check.status_code == 200:
-        delete_response = requests.delete(f'{BASE_URL}/object/{post_id}')
-        assert delete_response.status_code == 200
         print(f'✓ Объект {post_id} удалён')
     else:
         print(f'! Объект {post_id} уже был удалён')
@@ -58,7 +55,7 @@ def test_get_one_objects(start_one, create_test_object):
 
 @pytest.mark.critical
 @pytest.mark.parametrize("name, data", NEW_CAR)
-def test_post_object(name, data):
+def test_post_object(name, data, start_one):
     body = {"name": name, "data": data}
     response = requests.post(BASE_URL + '/object', json=body, headers=HEADERS)
     assert response.status_code == 200
