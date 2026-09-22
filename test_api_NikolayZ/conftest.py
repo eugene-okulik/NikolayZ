@@ -12,9 +12,11 @@ from endpoints.delete_object import DeleteObject
 def create_object_endpoint():
     return CreateObject()
 
+
 @pytest.fixture()
 def update_object_endpoint():
     return UpdateObject()
+
 
 @pytest.fixture()
 def create_test_object(create_object_endpoint):
@@ -32,17 +34,21 @@ def create_test_object(create_object_endpoint):
     else:
         print(f'! Объект {test_id} уже был удалён')
 
+
 @pytest.fixture()
 def get_many_object_endpoint():
     return GetManyObject()
+
 
 @pytest.fixture()
 def get_one_object_endpoint():
     return GetOneObject()
 
+
 @pytest.fixture()
 def change_object_endpoint():
     return ChangeObject()
+
 
 @pytest.fixture()
 def delete_object_endpoint():
