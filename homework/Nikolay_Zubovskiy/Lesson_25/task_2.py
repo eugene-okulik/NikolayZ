@@ -63,12 +63,10 @@ def test_student_registration_form(driver):
            ).select_by_visible_text(year)
     Select(driver.find_element(By.CSS_SELECTOR, ".react-datepicker__month-select")
            ).select_by_visible_text(month)
-    driver.find_element(
-        By.XPATH,
-        f"//div[contains(@class,'react-datepicker__day') "
-              f"and not(contains(@class,'--outside-month')) "
-              f"and text()='{day}']"
-    ).click()
+    driver.find_element(By.XPATH,
+                        f"//div[contains(@class,'react-datepicker__day') "
+                        f"and not(contains(@class,'--outside-month')) "
+                        f"and text()='{day}']").click()
 
     driver.find_element(By.ID, "submit").click()
     modal = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "modal-content")))

@@ -6,9 +6,9 @@ Student_Registration_Form = {
     "gender": "Male",
     "mobile": "9876543210",
     "date_of_birth": "1 May 1900",
-    "subjects":  "Maths",
-    "hobbies":  "Sports",
+    "subjects": "Maths",
+    "hobbies": "Sports",
     "current_address": "123 Main Street, Moscow",
-    "state":  "NCR",
-    "city" : "Noida"
+    "state": "NCR",
+    "city": "Noida"
 }
