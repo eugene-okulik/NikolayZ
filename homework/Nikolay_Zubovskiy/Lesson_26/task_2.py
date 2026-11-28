@@ -39,4 +39,4 @@ def test_add_to_cart_via_hover(driver):
         )
     )
     assert product_text in popup.text, \
-        f"Товар '{product_text}' не найден в попапе. Текст попапа: {popup.text.lower()}"
+        f"Товар '{product_text}' не найден в попапе. Текст попапа: {popup.text}"
